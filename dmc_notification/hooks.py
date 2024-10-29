@@ -133,23 +133,26 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"dmc_notification.tasks.all"
-# 	],
-# 	"daily": [
-# 		"dmc_notification.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"dmc_notification.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"dmc_notification.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"dmc_notification.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    "cron": {
+        "* * * * *": "dmc_notification.notify.send_notification",
+    }
+    # 	"all": [
+    # 		"dmc_notification.tasks.all"
+    # 	],
+    # 	"daily": [
+    # 		"dmc_notification.tasks.daily"
+    # 	],
+    # 	"hourly": [
+    # 		"dmc_notification.tasks.hourly"
+    # 	],
+    # 	"weekly": [
+    # 		"dmc_notification.tasks.weekly"
+    # 	],
+    # 	"monthly": [
+    # 		"dmc_notification.tasks.monthly"
+    # 	],
+}
 
 # Testing
 # -------
@@ -226,4 +229,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
