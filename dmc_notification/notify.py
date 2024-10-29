@@ -6,7 +6,6 @@ from frappe.utils import add_days, add_months, format_date, getdate, today
 # do bench migrate and excute it
 
 
-@frappe.whitelist()
 def send_notification():
     emails = ["shaymaa@dmc.com", "ahmed.atef@gmail.com"]
     msg = "Renewal Date is coming next month"
