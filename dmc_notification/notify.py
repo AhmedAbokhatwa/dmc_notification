@@ -6,6 +6,7 @@ from frappe.utils import add_days, add_months, format_date, getdate, today
 # do bench migrate and excute it
 
 
+@frappe.whitelist()
 def send_notification():
     emails = ["shaymaa@dmc.com", "ahmed.atef@gmail.com"]
     msg = "Renewal Date is coming next month"
@@ -22,10 +23,10 @@ def send_notification():
                 fields=["renewal_date", "parent"],
             )
             today_date = getdate(today())
-            last_month_date = add_months(today_date, -1)
-            print("tab :", last_month_date)
             for row in table:
-                if row["renewal_date"] == last_month_date:
+                renewal_date_last_month = add_months(row["renewal_date"], -1)
+                print(renewal_date_last_month, today_date)
+                if renewal_date_last_month == today_date:
                     try:
                         notification = frappe.new_doc("Notification Log")
                         notification.for_user = email
